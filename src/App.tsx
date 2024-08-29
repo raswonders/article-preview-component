@@ -42,7 +42,11 @@ function App() {
                 className="relative ml-auto rounded-full shrink-0"
                 onClick={toggleShare}
               >
-                <img src="/assets/icon-share.svg" alt="Share icon" />
+                {shareOpen ? (
+                  <img src="/assets/icon-share-active.svg" alt="Share icon" />
+                ) : (
+                  <img src="/assets/icon-share.svg" alt="Share icon" />
+                )}
                 {shareOpen && (
                   <div className="absolute right-1/2 translate-x-1/2 -top-4 -translate-y-full px-8 py-4 hidden lg:flex lg:gap-4 lg:items-center bg-dark-gray rounded-[10px] shadow-[0px_10px_10px_rgba(201,213,225,0.50)]">
                     <div className="absolute -bottom-[10px] right-1/2 translate-x-1/2 border-t-dark-gray border-t-[10px] border-x-[10px] border-x-transparent"></div>
