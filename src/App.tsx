@@ -18,7 +18,7 @@ function App() {
             className="rounded-t-[10px] lg:rounded-r-none lg:rounded-l-[10px] max-h-[200px] lg:max-h-none  w-full lg:min-w-[280px] lg:h-full object-cover object-center"
           />
         </header>
-        <section className="space-y-3 lg:pt-6">
+        <section className="space-y-3 lg:pt-5">
           <h1 className="px-8 font-bold">{article.title}</h1>
           <p className="px-8 font-medium text-sm text-[#6E8098]">
             {article.content}
