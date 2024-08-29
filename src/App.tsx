@@ -35,7 +35,7 @@ function App() {
               />
               <div>
                 <h2 className="text-sm font-bold">{article.author.name}</h2>
-                <h3 className="text-sm text-[#9DAEC2]">
+                <h3 className="text-sm text-light-gray">
                   {article.author.date}
                 </h3>
               </div>

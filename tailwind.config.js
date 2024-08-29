@@ -8,6 +8,7 @@ export default {
       },
       colors: {
         "dark-gray": "#48556A",
+        "light-gray": "#9DAEC2",
       },
     },
   },
