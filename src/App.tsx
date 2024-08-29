@@ -11,14 +11,14 @@ function App() {
   return (
     <div className="min-h-screen lg:grid lg:place-content-center">
       <article className="my-[74px] mx-6 lg:max-w-[730px] flex flex-col lg:flex-row gap-8 lg:gap-0 rounded-[10px] bg-white shadow-[0px_40px_40px_-10px_rgba(201,213,225,0.50)]">
-        <header className="">
+        <header>
           <img
             src={article.image.url}
             alt={article.image.alt}
-            className="max-h-[200px] lg:max-h-none  w-full lg:min-w-[280px] lg:h-full object-cover object-center"
+            className="rounded-t-[10px] lg:rounded-r-none lg:rounded-l-[10px] max-h-[200px] lg:max-h-none  w-full lg:min-w-[280px] lg:h-full object-cover object-center"
           />
         </header>
-        <section className="space-y-3 lg:py-6">
+        <section className="space-y-3 lg:pt-6">
           <h1 className="px-8 font-bold">{article.title}</h1>
           <p className="px-8 font-medium text-sm text-[#6E8098]">
             {article.content}
@@ -70,7 +70,7 @@ function App() {
             </div>
 
             {shareOpen && (
-              <div className="absolute px-8 py-5 inset-0 flex lg:hidden items-center bg-[#48556A] text-white gap-5">
+              <div className="absolute px-8 py-5 rounded-b-[10px] inset-0 flex lg:hidden items-center bg-[#48556A] text-white gap-5">
                 <span className="text-sm tracking-[5px] text-[#9DAEC2] uppercase">
                   Share
                 </span>
