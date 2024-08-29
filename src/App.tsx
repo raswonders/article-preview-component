@@ -9,8 +9,8 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen lg:grid lg:place-content-center">
-      <article className="my-[74px] mx-6 lg:max-w-[730px] flex flex-col lg:flex-row gap-8 lg:gap-0 rounded-[10px] bg-white shadow-[0px_40px_40px_-10px_rgba(201,213,225,0.50)]">
+    <div className="min-h-screen grid justify-center items-start lg:place-content-center">
+      <article className="my-[74px] mx-6 max-w-[520px] lg:max-w-[730px] flex flex-col lg:flex-row gap-8 lg:gap-0 rounded-[10px] bg-white shadow-[0px_40px_40px_-10px_rgba(201,213,225,0.50)]">
         <header>
           <img
             src={article.image.url}
