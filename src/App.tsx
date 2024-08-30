@@ -41,7 +41,7 @@ function App() {
               </div>
 
               <div className="relative ml-auto">
-                <button className="rounded-full shrink-0" onClick={toggleShare}>
+                <button className="rounded-full shrink-0 align-middle" onClick={toggleShare}>
                   {shareOpen ? (
                     <img src="/assets/icon-share-active.svg" alt="Share icon" />
                   ) : (
