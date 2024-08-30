@@ -17,7 +17,7 @@ function App() {
           <img
             src={article.image.url}
             alt={article.image.alt}
-            className="rounded-t-[10px] lg:rounded-r-none lg:rounded-l-[10px] max-h-[200px] lg:max-h-none  w-full lg:min-w-[280px] lg:h-full object-cover object-center"
+            className="rounded-t-[10px] lg:rounded-r-none lg:rounded-l-[10px] max-h-[200px] lg:max-h-none  w-full lg:min-w-[280px] lg:h-full object-cover object-left"
           />
         </header>
         <section className="space-y-3 lg:pt-8">
