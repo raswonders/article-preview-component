@@ -21,7 +21,7 @@ function App() {
           />
         </header>
         <section className="space-y-3 lg:pt-5">
-          <h1 className="px-8 font-bold">{article.title}</h1>
+          <h2 className="px-8 font-bold">{article.title}</h2>
           <p className="px-8 font-medium text-sm text-[#6E8098]">
             {article.content}
           </p>
@@ -41,7 +41,10 @@ function App() {
               </div>
 
               <div className="relative ml-auto">
-                <button className="rounded-full shrink-0 align-middle" onClick={toggleShare}>
+                <button
+                  className="rounded-full shrink-0 align-middle"
+                  onClick={toggleShare}
+                >
                   {shareOpen ? (
                     <img src="/assets/icon-share-active.svg" alt="Share icon" />
                   ) : (
