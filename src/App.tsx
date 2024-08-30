@@ -20,13 +20,13 @@ function App() {
             className="rounded-t-[10px] lg:rounded-r-none lg:rounded-l-[10px] max-h-[200px] lg:max-h-none  w-full lg:min-w-[280px] lg:h-full object-cover object-center"
           />
         </header>
-        <section className="space-y-3 lg:pt-5">
-          <h2 className="px-8 font-bold lg:text-xl">{article.title}</h2>
-          <p className="px-8 font-medium text-sm text-[#6E8098]">
+        <section className="space-y-3 lg:pt-8">
+          <h2 className="px-8 lg:px-10 font-bold lg:text-xl">{article.title}</h2>
+          <p className="px-8 lg:px-10 font-medium text-sm text-[#6E8098]">
             {article.content}
           </p>
 
-          <footer className="px-8 py-5 relative">
+          <footer className="px-8 lg:px-10 py-5 lg:pb-10 relative">
             <div className="flex items-center gap-4">
               <img
                 src={article.author.image.url}
