@@ -21,7 +21,7 @@ function App() {
           />
         </header>
         <section className="space-y-3 lg:pt-5">
-          <h2 className="px-8 font-bold lg:text-xl">{article.title}</h1>
+          <h2 className="px-8 font-bold lg:text-xl">{article.title}</h2>
           <p className="px-8 font-medium text-sm text-[#6E8098]">
             {article.content}
           </p>
