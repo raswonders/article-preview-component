@@ -40,17 +40,16 @@ function App() {
                 </h3>
               </div>
 
-              <button
-                className="relative ml-auto rounded-full shrink-0"
-                onClick={toggleShare}
-              >
-                {shareOpen ? (
-                  <img src="/assets/icon-share-active.svg" alt="Share icon" />
-                ) : (
-                  <img src="/assets/icon-share.svg" alt="Share icon" />
-                )}
+              <div className="relative ml-auto">
+                <button className="rounded-full shrink-0" onClick={toggleShare}>
+                  {shareOpen ? (
+                    <img src="/assets/icon-share-active.svg" alt="Share icon" />
+                  ) : (
+                    <img src="/assets/icon-share.svg" alt="Share icon" />
+                  )}
+                </button>
                 <SharePopover open={shareOpen} />
-              </button>
+              </div>
             </div>
             <ShareBar open={shareOpen} handleClick={toggleShare} />
           </footer>
