@@ -11,7 +11,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen grid justify-center items-start lg:place-content-center">
+    <main className="min-h-screen grid justify-center items-start lg:place-content-center">
       <article className="my-[74px] mx-6 max-w-[520px] lg:max-w-[730px] flex flex-col lg:flex-row gap-8 lg:gap-0 rounded-[10px] bg-white shadow-[0px_40px_40px_-10px_rgba(201,213,225,0.50)]">
         <header>
           <img
@@ -21,7 +21,7 @@ function App() {
           />
         </header>
         <section className="space-y-3 lg:pt-5">
-          <h2 className="px-8 font-bold">{article.title}</h2>
+          <h2 className="px-8 font-bold">{article.title}</h1>
           <p className="px-8 font-medium text-sm text-[#6E8098]">
             {article.content}
           </p>
@@ -41,10 +41,7 @@ function App() {
               </div>
 
               <div className="relative ml-auto">
-                <button
-                  className="rounded-full shrink-0 align-middle"
-                  onClick={toggleShare}
-                >
+                <button className="rounded-full shrink-0 align-middle" onClick={toggleShare}>
                   {shareOpen ? (
                     <img src="/assets/icon-share-active.svg" alt="Share icon" />
                   ) : (
@@ -58,7 +55,7 @@ function App() {
           </footer>
         </section>
       </article>
-    </div>
+    </main>
   );
 }
 
