@@ -2,7 +2,6 @@ import { useState } from "react";
 import * as Popover from "@radix-ui/react-popover";
 
 interface Props {
-  isMobile: boolean;
   author: {
     name: string;
     date: string;
@@ -10,7 +9,7 @@ interface Props {
   };
 }
 
-export function ArticleMetadata({ author, isMobile }: Props) {
+export function ArticleMetadata({ author }: Props) {
   const [isShareOpen, setIsShareOpen] = useState(false);
 
   function handleOpenChange(open: boolean) {
@@ -57,10 +56,13 @@ export function ArticleMetadata({ author, isMobile }: Props) {
   return (
     <Popover.Root onOpenChange={handleOpenChange}>
       <footer
-        className={`relative px-8 lg:px-10 py-5 lg:pb-10 rounded-b-[10px] ${isMobile && isShareOpen ? "bg-dark-gray text-white" : ""}`}
+        className={`relative px-8 lg:px-10 py-5 lg:pb-10 rounded-b-[10px] ${isShareOpen ? "bg-dark-gray text-white lg:bg-inherit lg:text-inherit" : ""}`}
       >
         <div className="flex items-center gap-4 h-10">
-          {isMobile && isShareOpen ? shareContent : metadata}
+          <div className="hidden lg:flex items-center gap-4">{metadata}</div>
+          <div className="flex lg:hidden items-center gap-4">
+            {isShareOpen ? shareContent : metadata}
+          </div>
           <div className="relative ml-auto">
             <Popover.Trigger asChild>
               <button className="rounded-full shrink-0 align-middle">
@@ -74,18 +76,16 @@ export function ArticleMetadata({ author, isMobile }: Props) {
           </div>
         </div>
       </footer>
-      {!isMobile && (
-        <Popover.Portal>
-          <Popover.Content
-            side="top"
-            sideOffset={20}
-            className="relative px-8 py-4 flex gap-4 items-center bg-dark-gray rounded-[10px] shadow-[0px_10px_10px_rgba(201,213,225,0.50)]"
-          >
-            <div className="absolute -bottom-[10px] right-1/2 translate-x-1/2 border-t-dark-gray border-t-[12px] border-x-[12px] border-x-transparent"></div>
-            {shareContent}
-          </Popover.Content>
-        </Popover.Portal>
-      )}
+      <Popover.Portal>
+        <Popover.Content
+          side="top"
+          sideOffset={20}
+          className="relative px-8 py-4 hidden lg:flex lg:gap-4 lg:items-center bg-dark-gray rounded-[10px] shadow-[0px_10px_10px_rgba(201,213,225,0.50)]"
+        >
+          <div className="absolute -bottom-[10px] right-1/2 translate-x-1/2 border-t-dark-gray border-t-[12px] border-x-[12px] border-x-transparent"></div>
+          {shareContent}
+        </Popover.Content>
+      </Popover.Portal>
     </Popover.Root>
   );
 }

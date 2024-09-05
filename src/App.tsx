@@ -1,22 +1,7 @@
 import article from "./data.json";
 import { ArticleMetadata } from "./components/ArticleMetadata";
-import { useEffect, useState } from "react";
 
 function App() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
-
-  useEffect(() => {
-    function handleResize() {
-      setIsMobile(window.innerWidth < 1024);
-    }
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
   return (
     <main className="min-h-screen grid justify-center items-start lg:place-content-center">
       <article className="my-[74px] mx-6 max-w-[520px] lg:max-w-[730px] flex flex-col lg:flex-row gap-8 lg:gap-0 rounded-[10px] bg-white shadow-[0px_40px_40px_-10px_rgba(201,213,225,0.50)]">
@@ -34,7 +19,7 @@ function App() {
           <p className="px-8 lg:px-10 font-medium text-sm text-[#6E8098]">
             {article.content}
           </p>
-          <ArticleMetadata author={article.author} isMobile={isMobile} />
+          <ArticleMetadata author={article.author} />
         </section>
       </article>
     </main>
