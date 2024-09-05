@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { SharePopover } from "./SharePopover";
+import * as Popover from "@radix-ui/react-popover";
 
 interface Props {
+  isMobile: boolean;
   author: {
     name: string;
     date: string;
@@ -9,11 +10,11 @@ interface Props {
   };
 }
 
-export function ArticleMetadata({ author }: Props) {
-  const [shareOpen, setShareOpen] = useState(false);
+export function ArticleMetadata({ author, isMobile }: Props) {
+  const [isShareOpen, setIsShareOpen] = useState(false);
 
-  function toggleShare() {
-    setShareOpen((prev) => !prev);
+  function handleOpenChange(open: boolean) {
+    setIsShareOpen(open);
   }
 
   const shareContent = (
@@ -54,26 +55,37 @@ export function ArticleMetadata({ author }: Props) {
   );
 
   return (
-    <footer
-      className={`relative px-8 lg:px-10 py-5 lg:pb-10 rounded-b-[10px] ${shareOpen ? "bg-dark-gray text-white" : ""}`}
-    >
-      <div className="flex items-center gap-4 h-10">
-        {shareOpen ? shareContent : metadata}
-        <div className="relative ml-auto">
-          <button
-            className="rounded-full shrink-0 align-middle"
-            onClick={toggleShare}
-          >
-            {shareOpen ? (
-              <img src="/assets/icon-share-active.svg" alt="Share icon" />
-            ) : (
-              <img src="/assets/icon-share.svg" alt="Share icon" />
-            )}
-          </button>
-          <SharePopover open={shareOpen}>{shareContent}</SharePopover>
+    <Popover.Root onOpenChange={handleOpenChange}>
+      <footer
+        className={`relative px-8 lg:px-10 py-5 lg:pb-10 rounded-b-[10px] ${isMobile && isShareOpen ? "bg-dark-gray text-white" : ""}`}
+      >
+        <div className="flex items-center gap-4 h-10">
+          {isMobile && isShareOpen ? shareContent : metadata}
+          <div className="relative ml-auto">
+            <Popover.Trigger asChild>
+              <button className="rounded-full shrink-0 align-middle">
+                {isShareOpen ? (
+                  <img src="/assets/icon-share-active.svg" alt="Share icon" />
+                ) : (
+                  <img src="/assets/icon-share.svg" alt="Share icon" />
+                )}
+              </button>
+            </Popover.Trigger>
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+      {!isMobile && (
+        <Popover.Portal>
+          <Popover.Content
+            side="top"
+            sideOffset={20}
+            className="relative px-8 py-4 flex gap-4 items-center bg-dark-gray rounded-[10px] shadow-[0px_10px_10px_rgba(201,213,225,0.50)]"
+          >
+            <div className="absolute -bottom-[10px] right-1/2 translate-x-1/2 border-t-dark-gray border-t-[12px] border-x-[12px] border-x-transparent"></div>
+            {shareContent}
+          </Popover.Content>
+        </Popover.Portal>
+      )}
+    </Popover.Root>
   );
-  // return <Popover.Root defaultOpen={false}></Popover.Root>;
 }
