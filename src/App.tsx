@@ -1,14 +1,21 @@
-import { useState } from "react";
 import article from "./data.json";
-import { SharePopover } from "./components/SharePopover";
-import { ShareBar } from "./components/ShareBar";
+import { ArticleMetadata } from "./components/ArticleMetadata";
+import { useEffect, useState } from "react";
 
 function App() {
-  const [shareOpen, setShareOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
 
-  function toggleShare() {
-    setShareOpen((prev) => !prev);
-  }
+  useEffect(() => {
+    function handleResize() {
+      setIsMobile(window.innerWidth < 1024);
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <main className="min-h-screen grid justify-center items-start lg:place-content-center">
@@ -21,38 +28,13 @@ function App() {
           />
         </header>
         <section className="space-y-3 lg:pt-8">
-          <h2 className="px-8 lg:px-10 font-bold lg:text-xl">{article.title}</h2>
+          <h2 className="px-8 lg:px-10 font-bold lg:text-xl">
+            {article.title}
+          </h2>
           <p className="px-8 lg:px-10 font-medium text-sm text-[#6E8098]">
             {article.content}
           </p>
-
-          <footer className="px-8 lg:px-10 py-5 lg:pb-10 relative">
-            <div className="flex items-center gap-4">
-              <img
-                src={article.author.image.url}
-                alt={article.author.image.alt}
-                className="w-10 h-10 rounded-full"
-              />
-              <div>
-                <h2 className="text-sm font-bold">{article.author.name}</h2>
-                <h3 className="text-sm text-light-gray">
-                  {article.author.date}
-                </h3>
-              </div>
-
-              <div className="relative ml-auto">
-                <button className="rounded-full shrink-0 align-middle" onClick={toggleShare}>
-                  {shareOpen ? (
-                    <img src="/assets/icon-share-active.svg" alt="Share icon" />
-                  ) : (
-                    <img src="/assets/icon-share.svg" alt="Share icon" />
-                  )}
-                </button>
-                <SharePopover open={shareOpen} />
-              </div>
-            </div>
-            <ShareBar open={shareOpen} handleClick={toggleShare} />
-          </footer>
+          <ArticleMetadata author={article.author} isMobile={isMobile} />
         </section>
       </article>
     </main>
